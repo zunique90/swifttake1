@@ -57,7 +57,7 @@ export default function Home() {
           </div>
           <div className="section-footer">
             <Link href="#" className="button">
-              Learn more
+              Demo
             </Link>
           </div>
         </div>
