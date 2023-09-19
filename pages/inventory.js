@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "../styles/table.module.css";
 
 export default function InventoryTable() {
   const [columns, setColumns] = useState([]);
@@ -21,28 +22,30 @@ export default function InventoryTable() {
   };
 
   return (
-    <div>
-      <button onClick={handleAddColumn}>Add Column</button>
-      <button onClick={handleAddRow}>Add Row</button>
+    <div className="container-img">
+      <div className={style.inventoryTable}>
+        <button onClick={handleAddColumn}>Add Column</button>
+        <button onClick={handleAddRow}>Add Row</button>
 
-      <table>
-        <thead>
-          <tr>
-            {columns.map((column, index) => (
-              <th key={index}>{column}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {columns.map((column, columnIndex) => (
-                <td key={columnIndex}>{row[column]}</td>
+        <table>
+          <thead>
+            <tr>
+              {columns.map((column, index) => (
+                <th key={index}>{column}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {columns.map((column, columnIndex) => (
+                  <td key={columnIndex}>{row[column]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

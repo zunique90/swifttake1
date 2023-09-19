@@ -1,5 +1,4 @@
 import { useState } from "react";
-import style from "../styles/dropdown.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,6 +7,10 @@ export default function Navbar() {
 
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
+  };
+
+  const handleLinkClick = () => {
+    setShowDropdown(false);
   };
 
   return (
@@ -35,7 +38,7 @@ export default function Navbar() {
                 About
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item-sign">
               <div className>
                 <Link
                   className="nav-link"
@@ -45,21 +48,19 @@ export default function Navbar() {
                   <Image src="/images/user.png" width={25} height={25}></Image>
                 </Link>
                 {showDropdown && (
-                  <div>
-                    <Link href="/login">Signup/Login </Link>
-                    <Link href="/dashboard">Go to Dashboard</Link>
+                  <div className="dropdown-menu">
+                    <Link href="/login" onClick={handleLinkClick}>
+                      Login
+                    </Link>
+                    <Link href="/dashboard" onClick={handleLinkClick}>
+                      Dashboard
+                    </Link>
+                    <Link href="/" onClick={handleLinkClick}>
+                      Sign Out
+                    </Link>
                   </div>
                 )}
               </div>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="#">
-                <Image
-                  src="/images/notification.png"
-                  width={25}
-                  height={25}
-                ></Image>
-              </Link>
             </li>
           </ul>
         </nav>

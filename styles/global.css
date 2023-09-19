@@ -432,9 +432,19 @@ a:active {
 }
 
 .container {
-  width: 960px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.container-img {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("../public/images/warehouse1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
 }
 
 .footer {
@@ -465,7 +475,7 @@ a:active {
 }
 
 .navbar-menu {
-  float: right;
+  float: center;
   padding-top: 2rem;
 }
 
@@ -483,6 +493,16 @@ a:active {
   letter-spacing: var(--nav-item-letter-spacing);
   display: var(--nav-item-display);
   margin: var(--nav-item-margin);
+}
+
+.nav .nav-item-sign {
+  font-family: var(--nav-item-font-family);
+  font-weight: var(--nav-item-font-weight);
+  font-size: var(--nav-item-font-size);
+  letter-spacing: var(--nav-item-letter-spacing);
+  display: var(--nav-item-display);
+  margin: var(--nav-item-margin);
+  float: right;
 }
 
 .nav .nav-link {
@@ -539,6 +559,8 @@ ul.row {
   display: var(--button-display);
   padding: var(--button-padding);
   border: var(--button-border);
+  border-radius: 5px;
+  margin-left: 10px;
   font-size: var(--button-font-size);
   color: var(--button-color);
   text-decoration: var(--button-text-decoration);
@@ -575,4 +597,26 @@ ul.row {
 
 .text-with-irish-grover {
   font-family: 'Irish Grover';
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  transform: translateX(-100%);
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  color: #000;
 }

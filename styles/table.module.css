@@ -1,0 +1,33 @@
+.inventoryTable {
+  width: 1200px;
+  margin-top: 5rem;
+  margin-bottom: 50rem;
+}
+
+.inventoryTable button {
+  margin-bottom: 10px;
+}
+
+.inventoryTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventoryTable th,
+.inventoryTable td {
+  padding: 8px;
+  text-align: left;
+}
+
+.inventoryTable thead {
+  background-color: #111D4A;
+  color: white;
+}
+
+/* tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+.inventoryTable tbody tr:nth-child(odd) {
+  background-color: yellow;
+} */

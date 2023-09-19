@@ -5,10 +5,12 @@ export default function Home() {
   return (
     <>
       <section class="section-hero">
-        <div className="container">
+        <div className="container-img">
           <div className="section-body">
             <section className="section-inner">
-              <h2 className="section-title">Inventory Management made Easy</h2>
+              <h2 className="section-title" style={{ paddingLeft: "10px" }}>
+                Inventory Management made Easy
+              </h2>
               <Link href="/login" className="button">
                 Get Started
               </Link>
