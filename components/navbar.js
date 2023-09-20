@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container">
         <div className="header-logo">
           <Link href="/">
-            <h1>SwiftInventory</h1>
+            <Image src="/images/swiftimage.jpeg" width={300} height={80}></Image>
           </Link>
         </div>
         <nav className="navbar-menu">
