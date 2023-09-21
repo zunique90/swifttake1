@@ -18,7 +18,11 @@ export default function Navbar() {
       <div className="container">
         <div className="header-logo">
           <Link href="/">
-            <Image src="/images/swiftimage.jpeg" width={300} height={80}></Image>
+            <Image
+              src="/images/swiftimage.jpeg"
+              width={300}
+              height={80}
+            ></Image>
           </Link>
         </div>
         <nav className="navbar-menu">

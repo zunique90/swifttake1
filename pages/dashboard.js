@@ -4,18 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Dashboard() {
-  const [inventories, setInventories] = useState([
-    { name: "Inventory 1", totalItems: 10 },
-    { name: "Inventory 2", totalItems: 15 },
-    { name: "Inventory 3", totalItems: 8 },
-  ]);
+  const [inventories, setInventories] = useState([]);
 
   const handleAddInventory = () => {
-    const newInventory = {
-      name: `Inventory ${inventories.length + 1}`,
-      totalItems: 0,
-    };
-    setInventories([...inventories, newInventory]);
+    const inventoryName = prompt("Enter the name of the new inventory:");
+    if (inventoryName) {
+      const newInventory = {
+        name: inventoryName,
+        totalItems: 0,
+      };
+      setInventories([...inventories, newInventory]);
+    }
   };
 
   return (
@@ -41,7 +40,7 @@ export default function Dashboard() {
               <p className={style.totalItems}>
                 Total Items: {inventory.totalItems}
               </p>
-              <Link href="/inventory" style={{ paddingTop: "80px" }}>View/Add Items</Link>
+              <Link href="/inventory">View/Add Items</Link>
             </div>
           ))}
         </div>
