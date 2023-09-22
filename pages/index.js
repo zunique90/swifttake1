@@ -26,33 +26,31 @@ export default function Home() {
           <div className="section-body">
             <div className="row">
               <div className="col-1-2">
-                <h3>Stay Updated on the fly</h3>
+                <h3>Stay Updated on the go</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Ipsum, omnis expedita! Eum, praesentium cumque accusantium
-                  rem, sit quaerat est nisi ratione, deserunt ducimus quidem
-                  iste dicta quibusdam atque maxime cum!
+                  Whether you're in the office, on the go, or anywhere in
+                  between, SwiftInventory helps you to conveniently track and
+                  manage your inventory from the palm of your hand. With our
+                  user-friendly interface and seamless mobile accessibility, You
+                  can easily make updates or add new items on the fly.
                 </p>
                 <h3>Get notifications</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Ipsum, omnis expedita! Eum, praesentium cumque accusantium
-                  rem, sit quaerat est nisi ratione, deserunt ducimus quidem
-                  iste dicta quibusdam atque maxime cum!
+                  SwiftInventory will never let you run out of stock. Set up
+                  your reorder levels and expiry notifications, and you will
+                  instantly be alerted when a stock is about to run out or expire
                 </p>
                 <h3>Export data</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Ipsum, omnis expedita! Eum, praesentium cumque accusantium
-                  rem, sit quaerat est nisi ratione, deserunt ducimus quidem
-                  iste dicta quibusdam atque maxime cum!
+                  Select and export data from your inventory in a few clicks and
+                  in easy to read formats
                 </p>
               </div>
               <div className="col-1-2">
                 <Image
-                  src="/images/SwiftI.png"
-                  width={600}
-                  height={450}
+                  src="/images/swift2.png"
+                  width={650}
+                  height={430}
                 ></Image>
               </div>
             </div>

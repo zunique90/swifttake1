@@ -12,13 +12,35 @@ export default function InventoryTable() {
   const [rows, setRows] = useState([]);
 
   const handleAddRow = () => {
+    let newColumns = [...columns];
+    let promptExpiry = true;
+
+    if (columns.includes("Expiry Date")) {
+      promptExpiry = false;
+    } else {
+      const hasExpiry = prompt(
+        "Does the item have an expiry? (Y/N)"
+      )?.toLowerCase();
+      if (hasExpiry === "y" || hasExpiry === "yes") {
+        newColumns = [...columns, "Expiry Date"];
+      }
+    }
+
     const newRow = {};
-    columns.forEach((column) => {
-      const item = prompt(`Enter item for ${column}:`);
-      newRow[column] = item || "";
+    newColumns.forEach((column) => {
+      if (
+        column === "Quantity Issued (Units)" ||
+        column === "Quantity Remaining (Units)"
+      ) {
+        newRow[column] = ""; // Assign empty string as default value
+      } else {
+        const item = prompt(`Enter item for ${column}:`);
+        newRow[column] = item || "";
+      }
     });
     newRow["reorderLevel"] = prompt("Set reorder level:") || "";
     newRow["Quantity Remaining (Units)"] = newRow["Quantity Received (Units)"];
+    setColumns(newColumns);
     setRows([...rows, newRow]);
   };
 
@@ -30,12 +52,46 @@ export default function InventoryTable() {
       columnName === "Quantity Received (Units)" ||
       columnName === "Quantity Issued (Units)"
     ) {
-      const quantityReceived =
+      let quantityReceived =
         parseFloat(updatedRows[rowIndex]["Quantity Received (Units)"]) || 0;
-      const quantityIssued =
+      let quantityIssued =
         parseFloat(updatedRows[rowIndex]["Quantity Issued (Units)"]) || 0;
+
+      // Ensure the quantity values are not less than 0
+      quantityReceived = Math.max(quantityReceived, 0);
+      quantityIssued = Math.max(quantityIssued, 0);
+
+      updatedRows[rowIndex]["Quantity Received (Units)"] = quantityReceived;
+      updatedRows[rowIndex]["Quantity Issued (Units)"] = quantityIssued;
+
       updatedRows[rowIndex]["Quantity Remaining (Units)"] =
         quantityReceived - quantityIssued;
+    }
+
+    if (columnName === "Expiry Date") {
+      const currentDate = new Date();
+      const dateParts = newValue.split("/"); // Split the date string by "/"
+      const day = parseInt(dateParts[0], 10); // Extract the day
+      const month = parseInt(dateParts[1], 10) - 1; // Extract the month (subtract 1 because month is zero-based)
+      const year = parseInt(dateParts[2], 10); // Extract the year
+      const expiryDate = new Date(year, month, day); // Create a new Date object with the extracted parts
+      const isExpired = currentDate >= expiryDate;
+      const isWithin30Days =
+        expiryDate - currentDate <= 30 * 24 * 60 * 60 * 1000;
+      const cellClassName = isWithin30Days ? styles.highlightedCell : "";
+
+      if (
+        dateParts.length !== 3 ||
+        isNaN(day) ||
+        isNaN(month) ||
+        isNaN(year) ||
+        expiryDate.toString() === "Invalid Date"
+      ) {
+        // Invalid date format, clear the value
+        updatedRows[rowIndex][columnName] = "";
+      } else {
+        updatedRows[rowIndex][columnName] = newValue;
+      }
     }
 
     setRows(updatedRows);
@@ -102,6 +158,36 @@ export default function InventoryTable() {
                         } ${cellClassName}`}
                       >
                         {row[column]}
+                      </td>
+                    );
+                  } else if (column === "Expiry Date") {
+                    const currentDate = new Date();
+                    const expiryDate = new Date(row[column]);
+                    const isExpired = currentDate >= expiryDate;
+                    const isWithin30Days =
+                      expiryDate - currentDate <= 30 * 24 * 60 * 60 * 1000;
+                    const cellClassName = isWithin30Days
+                      ? styles.highlightedCell
+                      : "";
+
+                    return (
+                      <td
+                        key={columnIndex}
+                        className={`${
+                          columnIndex === 0 ? styles.firstColumn : ""
+                        } ${cellClassName}`}
+                      >
+                        <input
+                          type="text"
+                          value={row[column]}
+                          onChange={(e) =>
+                            handleCellValueChange(
+                              rowIndex,
+                              column,
+                              e.target.value
+                            )
+                          }
+                        />
                       </td>
                     );
                   } else {

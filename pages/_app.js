@@ -7,7 +7,10 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="viewport"
+          content="viewport-fit=cover width=device-width, initial-scale=1.0"
+        />
         <title>SwiftInventory</title>
       </Head>
       <Layout>
