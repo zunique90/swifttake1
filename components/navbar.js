@@ -33,12 +33,12 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#features">
+              <Link className="nav-link" href="/#features">
                 Features
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#about">
+              <Link className="nav-link" href="/#about">
                 About
               </Link>
             </li>
@@ -59,7 +59,7 @@ export default function Navbar() {
                     <Link href="/dashboard" onClick={handleLinkClick}>
                       Dashboard
                     </Link>
-                    <Link href="/" onClick={handleLinkClick}>
+                    <Link href="/#" onClick={handleLinkClick}>
                       Sign Out
                     </Link>
                   </div>

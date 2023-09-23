@@ -26,7 +26,14 @@ export default function Home() {
           <div className="section-body">
             <div className="row">
               <div className="col-1-2">
-                <h3>Stay Updated on the go</h3>
+                <h3>
+                  <Image
+                    src="/images/update.png"
+                    width={20}
+                    height={15}
+                  ></Image>
+                  {"  "}Create and update on the go
+                </h3>
                 <p>
                   Whether you're in the office, on the go, or anywhere in
                   between, SwiftInventory helps you to conveniently track and
@@ -34,13 +41,27 @@ export default function Home() {
                   user-friendly interface and seamless mobile accessibility, You
                   can easily make updates or add new items on the fly.
                 </p>
-                <h3>Get notifications</h3>
+                <h3><Image
+                    src="/images/notif.png"
+                    width={15}
+                    height={15}
+                  ></Image>
+                  {"  "}Get notifications
+                  </h3>
                 <p>
                   SwiftInventory will never let you run out of stock. Set up
                   your reorder levels and expiry notifications, and you will
-                  instantly be alerted when a stock is about to run out or expire
+                  instantly be alerted when a stock is about to run out or
+                  expire
                 </p>
-                <h3>Export data</h3>
+                <h3>
+                <Image
+                    src="/images/export.png"
+                    width={15}
+                    height={15}
+                  ></Image>
+                  {"  "}Export data
+                  </h3>
                 <p>
                   Select and export data from your inventory in a few clicks and
                   in easy to read formats
@@ -49,7 +70,7 @@ export default function Home() {
               <div className="col-1-2">
                 <Image
                   src="/images/swift2.png"
-                  width={650}
+                  width={620}
                   height={430}
                 ></Image>
               </div>
