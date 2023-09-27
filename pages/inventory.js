@@ -15,14 +15,14 @@ export default function InventoryTable() {
     let newColumns = [...columns];
     let promptExpiry = true;
 
-    if (columns.includes("Expiry Date")) {
+    if (columns.includes("Expiry Date (dd/mm/yy)")) {
       promptExpiry = false;
     } else {
       const hasExpiry = prompt(
         "Does the item have an expiry? (Y/N)"
       )?.toLowerCase();
       if (hasExpiry === "y" || hasExpiry === "yes") {
-        newColumns = [...columns, "Expiry Date"];
+        newColumns = [...columns, "Expiry Date (dd/mm/yy)"];
       }
     }
 
@@ -34,7 +34,7 @@ export default function InventoryTable() {
       ) {
         newRow[column] = ""; // Assign empty string as default value
       } else {
-        const item = prompt(`Enter item for ${column}:`);
+        const item = prompt(`Enter ${column}:`);
         newRow[column] = item || "";
       }
     });
@@ -68,7 +68,7 @@ export default function InventoryTable() {
         quantityReceived - quantityIssued;
     }
 
-    if (columnName === "Expiry Date") {
+    if (columnName === "Expiry Date (dd/mm/yy)") {
       const currentDate = new Date();
       const dateParts = newValue.split("/"); // Split the date string by "/"
       const day = parseInt(dateParts[0], 10); // Extract the day
@@ -160,7 +160,7 @@ export default function InventoryTable() {
                         {row[column]}
                       </td>
                     );
-                  } else if (column === "Expiry Date") {
+                  } else if (column === "Expiry Date (dd/mm/yy)") {
                     const currentDate = new Date();
                     const expiryDate = new Date(row[column]);
                     const isExpired = currentDate >= expiryDate;
