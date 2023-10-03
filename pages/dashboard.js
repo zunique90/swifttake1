@@ -19,13 +19,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className={style.searchBarContainer}>
-        <input
-          type="text"
-          placeholder="Search..."
-          className={style.searchBar}
-        />
-      </div>
       <div className={style.container}>
         <h1>Dashboard</h1>
         <div>

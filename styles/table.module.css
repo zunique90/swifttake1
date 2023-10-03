@@ -1,3 +1,20 @@
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  max-width: auto;
+  margin-left: auto;
+  float: center;
+  padding-top: 10rem;
+}
+
+.searchBar {
+  width: 600px;
+  margin: auto;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
 .inventoryTable {
   max-width: 1200px;
   margin-top: 5rem;

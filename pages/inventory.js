@@ -98,124 +98,137 @@ export default function InventoryTable() {
   };
 
   return (
-    <div className="container-img">
-      <div className={styles.inventoryTable}>
-        <button onClick={handleAddRow}>Add Item</button>
-        <button>Save</button>
-
-        <table>
-          <thead>
-            <tr>
-              {columns.map((column, index) => (
-                <th
-                  key={index}
-                  className={index === 0 ? styles.firstColumn : ""}
-                >
-                  {column}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {columns.map((column, columnIndex) => {
-                  if (
-                    column === "Quantity Issued (Units)" ||
-                    column === "Quantity Received (Units)"
-                  ) {
-                    return (
-                      <td
-                        key={columnIndex}
-                        className={columnIndex === 0 ? styles.firstColumn : ""}
-                      >
-                        <input
-                          type="number"
-                          value={row[column]}
-                          onChange={(e) =>
-                            handleCellValueChange(
-                              rowIndex,
-                              column,
-                              e.target.value
-                            )
-                          }
-                        />
-                      </td>
-                    );
-                  } else if (column === "Quantity Remaining (Units)") {
-                    const isBelowReorderLevel =
-                      parseFloat(row[column]) <=
-                      parseFloat(row["reorderLevel"]);
-                    const cellClassName = isBelowReorderLevel
-                      ? styles.highlightedCell
-                      : "";
-
-                    return (
-                      <td
-                        key={columnIndex}
-                        className={`${
-                          columnIndex === 0 ? styles.firstColumn : ""
-                        } ${cellClassName}`}
-                      >
-                        {row[column]}
-                      </td>
-                    );
-                  } else if (column === "Expiry Date (dd/mm/yy)") {
-                    const currentDate = new Date();
-                    const expiryDate = new Date(row[column]);
-                    const isExpired = currentDate >= expiryDate;
-                    const isWithin30Days =
-                      expiryDate - currentDate <= 30 * 24 * 60 * 60 * 1000;
-                    const cellClassName = isWithin30Days
-                      ? styles.highlightedCell
-                      : "";
-
-                    return (
-                      <td
-                        key={columnIndex}
-                        className={`${
-                          columnIndex === 0 ? styles.firstColumn : ""
-                        } ${cellClassName}`}
-                      >
-                        <input
-                          type="text"
-                          value={row[column]}
-                          onChange={(e) =>
-                            handleCellValueChange(
-                              rowIndex,
-                              column,
-                              e.target.value
-                            )
-                          }
-                        />
-                      </td>
-                    );
-                  } else {
-                    return (
-                      <td
-                        key={columnIndex}
-                        className={columnIndex === 0 ? styles.firstColumn : ""}
-                      >
-                        <input
-                          type="text"
-                          value={row[column]}
-                          onChange={(e) =>
-                            handleCellValueChange(
-                              rowIndex,
-                              column,
-                              e.target.value
-                            )
-                          }
-                        />
-                      </td>
-                    );
-                  }
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <>
+      <div className={styles.searchBarContainer}>
+        <input
+          type="text"
+          placeholder="Search..."
+          className={styles.searchBar}
+        />
       </div>
-    </div>
+      <div className="container-img">
+        <div className={styles.inventoryTable}>
+          <button onClick={handleAddRow}>Add Item</button>
+          <button>Save</button>
+
+          <table>
+            <thead>
+              <tr>
+                {columns.map((column, index) => (
+                  <th
+                    key={index}
+                    className={index === 0 ? styles.firstColumn : ""}
+                  >
+                    {column}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {columns.map((column, columnIndex) => {
+                    if (
+                      column === "Quantity Issued (Units)" ||
+                      column === "Quantity Received (Units)"
+                    ) {
+                      return (
+                        <td
+                          key={columnIndex}
+                          className={
+                            columnIndex === 0 ? styles.firstColumn : ""
+                          }
+                        >
+                          <input
+                            type="number"
+                            value={row[column]}
+                            onChange={(e) =>
+                              handleCellValueChange(
+                                rowIndex,
+                                column,
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                      );
+                    } else if (column === "Quantity Remaining (Units)") {
+                      const isBelowReorderLevel =
+                        parseFloat(row[column]) <=
+                        parseFloat(row["reorderLevel"]);
+                      const cellClassName = isBelowReorderLevel
+                        ? styles.highlightedCell
+                        : "";
+
+                      return (
+                        <td
+                          key={columnIndex}
+                          className={`${
+                            columnIndex === 0 ? styles.firstColumn : ""
+                          } ${cellClassName}`}
+                        >
+                          {row[column]}
+                        </td>
+                      );
+                    } else if (column === "Expiry Date (dd/mm/yy)") {
+                      const currentDate = new Date();
+                      const expiryDate = new Date(row[column]);
+                      const isExpired = currentDate >= expiryDate;
+                      const isWithin30Days =
+                        expiryDate - currentDate <= 30 * 24 * 60 * 60 * 1000;
+                      const cellClassName = isWithin30Days
+                        ? styles.highlightedCell
+                        : "";
+
+                      return (
+                        <td
+                          key={columnIndex}
+                          className={`${
+                            columnIndex === 0 ? styles.firstColumn : ""
+                          } ${cellClassName}`}
+                        >
+                          <input
+                            type="text"
+                            value={row[column]}
+                            onChange={(e) =>
+                              handleCellValueChange(
+                                rowIndex,
+                                column,
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                      );
+                    } else {
+                      return (
+                        <td
+                          key={columnIndex}
+                          className={
+                            columnIndex === 0 ? styles.firstColumn : ""
+                          }
+                        >
+                          <input
+                            type="text"
+                            value={row[column]}
+                            onChange={(e) =>
+                              handleCellValueChange(
+                                rowIndex,
+                                column,
+                                e.target.value
+                              )
+                            }
+                          />
+                        </td>
+                      );
+                    }
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 }
