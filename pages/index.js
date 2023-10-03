@@ -69,8 +69,9 @@ export default function Home() {
               </div>
               <div className="col-1-2">
                 <Image
+                  className="responsive-image"
                   src="/images/swift2.png"
-                  width={620}
+                  width={650}
                   height={430}
                 ></Image>
               </div>

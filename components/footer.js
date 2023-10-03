@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-1-2">
               <p className="footer-copyright">
-                © 2020 SwiftInventory.
+                © 2023 SwiftInventory.
               </p>
             </div>
           </div>

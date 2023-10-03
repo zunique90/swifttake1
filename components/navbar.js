@@ -54,7 +54,7 @@ export default function Navbar() {
                 {showDropdown && (
                   <div className="dropdown-menu">
                     <Link href="/login" onClick={handleLinkClick}>
-                      Login
+                      Sign in
                     </Link>
                     <Link href="/dashboard" onClick={handleLinkClick}>
                       Dashboard

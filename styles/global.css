@@ -549,6 +549,24 @@ ul.row {
   width: 50%;
 }
 
+@media (max-width: 768px) {
+    .col-1-2 {
+    width: 100%;
+    padding: 3rem;
+  }
+}
+
+.responsive-image {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .responsive-image {
+    display: none;
+  }
+}
+
 .row::after {
   content: "";
   display: table;
