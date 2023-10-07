@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Navbar() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
@@ -12,6 +13,19 @@ export default function Navbar() {
   const handleLinkClick = () => {
     setShowDropdown(false);
   };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +57,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item-sign">
-              <div className>
+              <div ref={dropdownRef}>
                 <Link
                   className="nav-link"
                   href="#"

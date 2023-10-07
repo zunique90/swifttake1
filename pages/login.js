@@ -54,12 +54,12 @@ export default function Login() {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={handleRememberMeChange}
-              />
-              {" "}Remember me
+              />{" "}
+              Remember me
             </label>
           </div>
           <button className={styles.button} type="submit">
-            Login
+            <Link href="/dashboard">Login</Link>
           </button>
           <p>
             Don't have an account? Sign up{" "}
