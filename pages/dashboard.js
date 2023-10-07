@@ -11,7 +11,6 @@ export default function Dashboard() {
     if (inventoryName) {
       const newInventory = {
         name: inventoryName,
-        totalItems: 0,
       };
       setInventories([...inventories, newInventory]);
     }
@@ -30,9 +29,6 @@ export default function Dashboard() {
                 height={100}
               ></Image>
               <h3 className={style.categoryName}>{inventory.name}</h3>
-              <p className={style.totalItems}>
-                Total Items: {inventory.totalItems}
-              </p>
               <Link href="/inventory">View/Add Items</Link>
             </div>
           ))}

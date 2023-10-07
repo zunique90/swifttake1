@@ -78,6 +78,11 @@ export default function About() {
             </div>
           </div>
         </div>
+        <div className="section-footer">
+          <Link href="#" className="button">
+            Watch Demo
+          </Link>
+        </div>
       </section>
     </>
   );

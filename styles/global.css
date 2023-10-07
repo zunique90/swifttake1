@@ -608,15 +608,6 @@ ul.row {
   left: var(--header-logo-link-left);
 }
 
-@font-face {
-  font-family: 'Irish Grover';
-  src: url('/public/fonts/IrishGrover-Regular.ttf') format('truetype');
-}
-
-.text-with-irish-grover {
-  font-family: 'Irish Grover';
-}
-
 .dropdown-menu {
   position: absolute;
   top: -10px;
